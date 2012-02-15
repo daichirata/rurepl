@@ -1,0 +1,7 @@
+{
+  "name": "rurepl",
+  "version": "0.0.1",
+  "dependencies": {
+    "zappa": "0.3.3"
+  }
+}
