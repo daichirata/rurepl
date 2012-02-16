@@ -1,4 +1,4 @@
-require('zappa') ->
+require('zappa') Number(process.env.PORT || 3000), ->
   @configure =>
     @use 'bodyParser', 'static'
 
@@ -8,17 +8,19 @@ require('zappa') ->
     production: =>
        @use 'errorHandler'
 
+  @helper sleep: (secs, cb) ->
+    setTimeout cb, secs * 1000
+
   # Stylus
   @include '/assets/stylus'
 
   # Javascript
   @include '/assets/script'
 
+  # WebSocket
+  @include '/assets/socket'
+
   # Routing
   @get '/': ->
     @render 'index'
-
-  # WebSocket
-  @on connection: ->
-    @emit write: { message: "Welcome to the page (aka Rurepl) Rurema Read-eval-print loop.", speed: 5 }
-
+      title: 'Rurema Read-eval-print loop'
