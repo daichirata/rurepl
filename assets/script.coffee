@@ -6,7 +6,7 @@
       $("form").submit =>
         message = $('#input-value')
         @emit search: { message: message.val() }
-        message.attr('value', '')
+#        message.attr('value', '')
         false
 
     @helper writeResult: (option) ->
