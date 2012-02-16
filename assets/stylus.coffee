@@ -19,7 +19,7 @@
       padding 10px 20px
 
     #container
-      width 960px
+      width 1020px
       margin 0 auto
 
     #repl, #input-select, #input-value
@@ -29,6 +29,7 @@
       background-color #111
 
     #repl
+      font-size 18px
       padding 10px 20px 20px
       border-radius 5px
 
@@ -44,8 +45,14 @@
       padding 4px
 
     #how-to
-      margin-top 40px
+      margin 40px 0
 
     #how-to li
       margin-bottom 10px
+
+    #meta-data
+      margin 30px 0
+
+    .mgn-lr
+      margin 0 10px
   '''
