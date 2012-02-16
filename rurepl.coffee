@@ -1,6 +1,7 @@
 require('zappa') Number(process.env.PORT || 3000), ->
   @configure =>
-    @use 'bodyParser', 'static'
+    @set("transports", ["xhr-polling"])
+    @set("polling duration", 10)
 
   @configure
     development: =>
