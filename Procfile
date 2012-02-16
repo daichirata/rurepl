@@ -1,1 +1,1 @@
-web: node rurepl.js
+web: coffee rurepl.coffee

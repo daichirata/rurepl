@@ -1,55 +1,24 @@
 require('zappa') ->
-  @get
-    '/': ->
-      @render 'index', foo: 'bar'
+  @configure =>
+    @use 'bodyParser', 'static'
 
-    '/eco': ->
-      @render 'index.eco', foo: 'bar'
+  @configure
+    development: =>
+       @use errorHandler: {showStack: true, dumpExceptions: on}
+    production: =>
+       @use 'errorHandler'
 
-    '/jade': ->
-      @render 'index.jade', foo: 'bar'
+  # Stylus
+  @include '/assets/stylus'
 
-  @view index: ->
-    h2 'CoffeeKup inline template'
-    p @foo
+  # Javascript
+  @include '/assets/script'
 
-  @view layout: ->
-    doctype 5
-    html ->
-      head ->
-        title 'CoffeeKup inline layout'
-      body ->
-        h1 'CoffeeKup inline layout'
-        @body
+  # Routing
+  @get '/': ->
+    @render 'index'
 
-  @view 'index.eco': '''
-    <h2>Eco inline template</h2>
-    <p><%= @foo %></p>
-  '''
+  # WebSocket
+  @on connection: ->
+    @emit write: { message: "Welcome to the page (aka Rurepl) Rurema Read-eval-print loop.", speed: 5 }
 
-  @view 'layout.eco': '''
-    <!DOCTYPE html>
-    <html>
-      <head>
-        <title>Eco inline layout</title>
-      <body>
-        <h1>Eco inline layout</h1>
-        <%- @body %>
-      </body>
-    </html>
-  '''
-
-  @view 'index.jade': '''
-    h2 Jade inline template
-    p= foo
-  '''
-
-  @view 'layout.jade': '''
-    !!! 5
-    html
-      head
-        title Jade inline layout
-      body
-        h1 Jade inline layout
-        != body
-  '''
