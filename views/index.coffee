@@ -2,7 +2,7 @@ div id: 'container', ->
   h1 @title
   div id: 'repl', ->
 
-    pre id: 'result', -> ''
+    pre id: 'result', -> 'Connecting...'
 
     div id: 'input', ->
       form id: 'input-form', ->
