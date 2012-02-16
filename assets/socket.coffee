@@ -7,7 +7,7 @@
       message: welcomeMessage
       speed: 1
 
-    @sleep 0.8, =>
+    @sleep 1, =>
       @emit push:
         message: exampleMessage
 

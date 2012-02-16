@@ -3,10 +3,6 @@ require('zappa') Number(process.env.PORT || 3000), ->
     @io.set("transports", ["xhr-polling"])
     @io.set("polling duration", 10)
 
-  @configure =>
-    @set("transports", ["xhr-polling"])
-    @set("polling duration", 10)
-
   @configure
     development: =>
        @use errorHandler: {showStack: true, dumpExceptions: on}
