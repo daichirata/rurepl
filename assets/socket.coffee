@@ -22,19 +22,22 @@
       else
         query = "/search/"
 
-    client = http.createClient 9292, 'localhost'
-    request = client.request 'GET', query, { 'host': 'localhost'}
-
-    request.end()
-    request.on 'response', (response) =>
-      response.on 'data', (chunk) =>
-        result = JSON.parse(chunk).result
-        if result instanceof Array
-          @emit write:
-            message: result.join("")
-        else
-          @emit write:
-            message: result
+    request = http.get
+      "host": "rurea-192.heroku.com"
+      "port": 80,
+      "path": query
+    , (response) =>
+        body = ''
+        response.on 'data', (chunk)->
+          body += chunk.toString()
+        response.on 'end', =>
+          result = JSON.parse(body).result
+          if result instanceof Array
+            @emit write:
+              message: result.join("")
+          else
+            @emit write:
+              message: result
 
   welcomeMessage = '''
 Welcome to the page (aka Rurepl) Rurema Read-eval-print loop.
