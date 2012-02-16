@@ -1,8 +1,4 @@
 require('zappa') Number(process.env.PORT || 3000), ->
-  @configure =>
-    @set("transports", ["xhr-polling"])
-    @set("polling duration", 10)
-
   @configure
     development: =>
        @use errorHandler: {showStack: true, dumpExceptions: on}
