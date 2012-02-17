@@ -43,6 +43,8 @@ html lang: 'ja', ->
         a class: 'hatena-bookmark-button', href: 'http://b.hatena.ne.jp/entry/http://rurepl.herokuapp.com/', 'data-hatena-bookmark-title': 'Rurema Read-eval-print loop', 'data-hatena-bookmark-layout': 'standard', title: 'このエントリーをはてなブックマークに追加', ->
           img src: 'http://b.st-hatena.com/images/entry-button/button-only.gif', alt: 'このエントリーをはてなブックマークに追加', width: '20', height: '20', style: 'border: none;'
           script type: 'text/javascript', src: 'http://b.st-hatena.com/js/bookmark_button.js', charset: 'utf-8', async: 'async'
+        span class: 'mgn-lr', -> '検索対象のドキュメントは<a href="http://bugs.ruby-lang.org/projects/rurema"> るりまプロジェクト </a>の成果物です。'
         a class: 'mgn-lr', href: 'https://github.com/daic-h/rurepl', -> 'Source Code'
         span -> 'created_by'
         a class: 'mgn-lr', href: 'https://twitter.com/#!/Daic_h', -> '@Daic_h'
+
