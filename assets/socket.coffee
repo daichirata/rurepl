@@ -22,9 +22,10 @@
       else
         query = "/search/"
 
+    # TODO host port
     request = http.get
-      "host": "localhost"
-      "port": 9292,
+      "host": "rurea-192.heroku.com",
+      "port": 80,
       "path": query
     , (response) =>
         body = ''
