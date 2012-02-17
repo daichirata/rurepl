@@ -20,11 +20,12 @@
 
     $ =>
       $("form").submit =>
-        writeResult
-          message: 'Connecting...'
-          speed: 30
         message = $('#input-value')
-        @emit search: { message: message.val() }
+        if message.val()
+          writeResult
+            message: 'Connecting...'
+            speed: 30
+          @emit search: { message: message.val() }
         false
 
     @on write: ->
