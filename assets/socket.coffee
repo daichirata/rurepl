@@ -1,15 +1,7 @@
 @include = ->
   http = require 'http'
-#  sys = require 'util'
 
   @on connection: ->
-#    @emit write:
-#      message: Messages.welcome
-#      speed: 1
-#
-#    @sleep 1, =>
-#      @emit push:
-#        message: Messages.example
 
   @on search: ->
     _message = @data.message
@@ -59,30 +51,6 @@
 
 
   Messages =
-    welcome: '''
-Welcome to the page (aka Rurepl) Rurema Read-eval-print loop.
-
-Example: Array.each
-'''
-
-    example: '''
-
-
-
-Array#each
---- each {|item| .... }    -> self
---- each                   -> Enumerator
-各要素に対してブロックを評価します。
-ブロックが与えられなかった場合は、自身と each から生成した[[c:Enumerator]] オブジェクトを返します。
-
-[1, 2, 3].each do |i|
-  puts i
-end
-#=> 1
-        2
-        3
-'''
-
     search: '''
 Please search in the ClassName.method or method
 

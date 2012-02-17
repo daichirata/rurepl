@@ -24,7 +24,7 @@
         speed: 1
       setTimeout ->
         pushResult Messages.example
-      , 1 * 1000
+      , 1.2 * 1000
 
       $("form").submit =>
         message = $('#input-value')
