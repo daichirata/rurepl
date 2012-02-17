@@ -19,6 +19,13 @@
       $('#result').append message
 
     $ =>
+      writeResult
+        message: Messages.welcome
+        speed: 1
+      setTimeout ->
+        pushResult Messages.example
+      , 1 * 1000
+
       $("form").submit =>
         message = $('#input-value')
         if message.val()
@@ -36,8 +43,27 @@
 
     @connect()
 
+    Messages =
+      welcome: '''
+Welcome to the page (aka Rurepl) Rurema Read-eval-print loop.
+
+Example: Array.each
+'''
+
+      example: '''
 
 
 
+Array#each
+--- each {|item| .... }    -> self
+--- each                   -> Enumerator
+各要素に対してブロックを評価します。
+ブロックが与えられなかった場合は、自身と each から生成した[[c:Enumerator]] オブジェクトを返します。
 
-
+[1, 2, 3].each do |i|
+  puts i
+end
+#=> 1
+        2
+        3
+'''

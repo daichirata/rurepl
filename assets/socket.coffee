@@ -3,13 +3,13 @@
 #  sys = require 'util'
 
   @on connection: ->
-    @emit write:
-      message: Messages.welcome
-      speed: 1
-
-    @sleep 1, =>
-      @emit push:
-        message: Messages.example
+#    @emit write:
+#      message: Messages.welcome
+#      speed: 1
+#
+#    @sleep 1, =>
+#      @emit push:
+#        message: Messages.example
 
   @on search: ->
     _message = @data.message
