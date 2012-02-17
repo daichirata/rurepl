@@ -34,7 +34,7 @@
       border-radius 5px
 
     #result
-      min-height: 330px;
+      min-height: 420px;
       padding-bottom 20px
 
     #input-value
