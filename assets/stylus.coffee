@@ -93,4 +93,10 @@
 
     dl.input-version dd li input:disabled + label
       color #222
+
+    #copyright
+      padding 10px 0
+      color #666
+      border-top 1px solid #111
+      text-align center
   '''
