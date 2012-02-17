@@ -1,15 +1,15 @@
 @include = ->
   http = require 'http'
-  sys = require 'util'
+#  sys = require 'util'
 
   @on connection: ->
     @emit write:
-      message: welcomeMessage
+      message: Messages.welcome
       speed: 1
 
     @sleep 1, =>
       @emit push:
-        message: exampleMessage
+        message: Messages.example
 
   @on search: ->
     _message = @data.message
@@ -23,29 +23,48 @@
         query = "/search/"
 
     request = http.get
-      "host": "rurea-192.heroku.com"
-      "port": 80,
+      "host": "localhost"
+      "port": 9292,
       "path": query
     , (response) =>
         body = ''
         response.on 'data', (chunk)->
           body += chunk.toString()
         response.on 'end', =>
-          result = JSON.parse(body).result
-          if result instanceof Array
-            @emit write:
-              message: result.join("")
-          else
-            @emit write:
-              message: result
+          try
+            res = JSON.parse(body)
+          catch e
+            res = { status: 500, result: "Internal Server Error #{e}" }
 
-  welcomeMessage = '''
+          switch res.status
+            when 200, 500
+              @emit write:
+                message: res.result
+            when 202
+              @emit write:
+                message: Messages.multiple
+                speed: 1
+              @sleep 0.8, =>
+                @emit push:
+                  message: res.result.join("")
+            when 400, 404
+              @emit write:
+                message: Messages.search
+                speed: 5
+              @sleep 0.8, =>
+                @emit push:
+                  message: res.result
+
+
+
+  Messages =
+    welcome: '''
 Welcome to the page (aka Rurepl) Rurema Read-eval-print loop.
 
 Example: Array.each
 '''
 
-  exampleMessage = '''
+    example: '''
 
 
 
@@ -61,4 +80,16 @@ end
 #=> 1
         2
         3
+'''
+
+    search: '''
+Please search in the ClassName.method or method
+
+
+'''
+
+    multiple: '''
+More than one candidate, you can choose a candidate in the "method number" ( for example: each 2 )
+
+
 '''
