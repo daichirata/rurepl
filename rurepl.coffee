@@ -24,4 +24,4 @@ require('zappa') Number(process.env.PORT || 3000), ->
   # Routing
   @get '/': ->
     @render 'index'
-      title: 'Rurema Read-eval-print loop (Ruby Ver1.9.2)'
+      title: 'Rurema Read-eval-print loop'
