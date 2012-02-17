@@ -5,6 +5,12 @@ div id: 'repl', ->
 
   div id: 'input', ->
     form id: 'input-form', ->
+      dl class: 'input-version', ->
+        dd -> ul -> '''
+          <li><input type="radio" name="version" id="r187", value="187" /><label>Ruby 1.8.7</label></li>
+          <li><input type="radio" name="version" id="r192", value="192" checked="checked"/><label>Ruby 1.9.2</label></li>
+          <li><input type="radio" name="version" id="r193", value="193" disabled="disabled"/><label>Ruby 1.9.3</label></li>
+        '''
       input id: 'input-value', type: 'text'
 
 div id: 'how-to', ->
@@ -12,8 +18,3 @@ div id: 'how-to', ->
   ul ->
     li -> '「メソッド名」または「クラス名.メソッド名」で検索してください'
     li -> '候補が複数出た場合、「メソッド名 番号」でその候補を選択できます(例： each 2)'
-  p -> '今後'
-  ul ->
-    li -> 'Ruby1.9.3、Ruby1.8.7に対応'
-    li -> 'リスト表示、プロンプト改善'
-

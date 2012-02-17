@@ -35,7 +35,7 @@
 
     #result
       min-height: 420px;
-      padding-bottom 20px
+      padding-bottom 50px
 
     #input-value
       border-radius 3px
@@ -55,4 +55,42 @@
 
     .mgn-lr
       margin 0 10px
+
+    dl.input-version dd
+      white-space nowrap
+
+    dl.input-version dd li
+      left -80px
+      top -20px
+      position relative
+      list-style none
+      float left
+
+    dl.input-version dd label
+      background #111
+      padding 10px 30px
+      border 1px solid #999
+      border-radius 0 0px 0px 0
+      color #aaa
+      text-align center
+
+    dl.input-version dd li:first-child label
+      border-radius 10px 0 0 10px
+
+    dl.input-version dd li:last-child label
+      border-radius 0 10px 10px 0
+
+    dl.input-version dd li input[type="radio"]
+      opacity 0
+      position absolute
+
+      width 100%
+      height 100%
+      padding 0
+
+    dl.input-version dd li input:checked + label
+      background #303030
+
+    dl.input-version dd li input:disabled + label
+      color #222
   '''

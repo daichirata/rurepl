@@ -1,11 +1,14 @@
 @include = ->
   http = require 'http'
+  sys = require 'util'
 
   @on connection: ->
 
   @on search: ->
     _message = @data.message
     message = _message.split(' ')
+    version = @data.version
+
     switch message.length
       when 1
         query = "/search/#{message[0]}"
@@ -14,9 +17,15 @@
       else
         query = "/search/"
 
+    switch version
+      when "187"
+        apiHost = "rurea-187.heroku.com"
+      else
+        apiHost = "rurea-192.heroku.com"
+
     # TODO host port
     request = http.get
-      "host": "rurea-192.heroku.com",
+      "host": apiHost,
       "port": 80,
       "path": query
     , (response) =>

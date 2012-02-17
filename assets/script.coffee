@@ -24,16 +24,28 @@
         speed: 1
       setTimeout ->
         pushResult Messages.example
-      , 1.2 * 1000
+      , 1.5 * 1000
 
       $("form").submit =>
         message = $('#input-value')
+        version = $('input[name=version]:checked').val()
+
         if message.val()
           writeResult
             message: 'Connecting...'
             speed: 30
-          @emit search: { message: message.val() }
+          @emit search: { message: message.val(), version: version }
         false
+
+      $('input:radio:not(:disabled)').click =>
+        message = $('#input-value')
+        version = $('input[name=version]:checked').val()
+
+        if message.val()
+          writeResult
+            message: 'Connecting...'
+            speed: 30
+          @emit search: { message: message.val(), version: version }
 
     @on write: ->
       writeResult @data
