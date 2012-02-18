@@ -34,8 +34,12 @@
       border-radius 5px
 
     #result
-      min-height: 420px;
+      min-height 420px
       padding-bottom 50px
+      white-space pre-wrap
+      word-wrap: break-word
+      overflow auto
+
 
     #input-value
       border-radius 3px

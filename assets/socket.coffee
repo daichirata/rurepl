@@ -7,25 +7,23 @@
   @on search: ->
     _message = @data.message
     message = _message.split(' ')
+
+    method = message[0].replace(/\#/, '@')
+    number = message[1]
+
     version = @data.version
 
     switch message.length
       when 1
-        query = "/search/#{message[0]}"
+        query = "/#{version}/#{method}"
       when 2
-        query = "/search/#{message[0]}/#{message[1]}"
+        query = "/#{version}/#{method}/#{number}"
       else
-        query = "/search/"
-
-    switch version
-      when "187"
-        apiHost = "rurea-187.heroku.com"
-      else
-        apiHost = "rurea-192.heroku.com"
+        query = "/"
 
     # TODO host port
     request = http.get
-      "host": apiHost,
+      "host": 'rurea.heroku.com',
       "port": 80,
       "path": query
     , (response) =>
@@ -38,6 +36,8 @@
           catch e
             res = { status: 500, result: "Internal Server Error #{e}" }
 
+          sys.puts res.result
+
           switch res.status
             when 200, 500
               @emit write:
@@ -48,7 +48,7 @@
                 speed: 1
               @sleep 0.8, =>
                 @emit push:
-                  message: res.result.join("")
+                  message: res.result.join(" ")
             when 400, 404
               @emit write:
                 message: Messages.search

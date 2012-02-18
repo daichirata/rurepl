@@ -49,8 +49,4 @@ html lang: 'ja', ->
 
       div id: 'copyright', ->
         p '検索対象のドキュメントは<a href="http://bugs.ruby-lang.org/projects/rurema"> るりまプロジェクト </a>の成果物です。'
-        p 'ドキュメントの検索は<a href="https://github.com/yhara/myrurema"> yhara/myrurema </a>を使用しています。'
-
-
-
 
