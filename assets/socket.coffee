@@ -43,19 +43,13 @@
               @emit write:
                 message: res.result
             when 202
-              @emit write:
-                message: Messages.multiple
-                speed: 1
-              @sleep 0.8, =>
-                @emit push:
-                  message: res.result.join(" ")
+              @emit push:
+                notice: Messages.multiple
+                message: res.result.join(" ")
             when 400, 404
-              @emit write:
-                message: Messages.search
-                speed: 5
-              @sleep 0.8, =>
-                @emit push:
-                  message: res.result
+              @emit push:
+                notice: Messages.search
+                message: res.result
 
 
 

@@ -1,68 +1,73 @@
 @include = ->
 
   @client '/index.js': ->
-    writeResult = (option) ->
-      speed = option.speed
-      message = option.message
-      target = $('#result')
+    @on write: ->
+      writeResult false, @data.message
+
+    @on push: ->
+      writeResult 100, @data.notice, 100, =>
+        pushResult @data.message
+
+    @connect()
+
+    writeResult = (speed, message, interval, callback) ->
+      element = $('#result')
+
+      write = (time) ->
+        next = element.text().length + 1
+        if next <= message.length
+          element.text(message.substr(0, next))
+          setTimeout ->
+            write(time)
+          , time
+        else
+          if callback
+            setTimeout ->
+              callback()
+            , interval
 
       if speed
-        progress = 0
-        timer = setInterval ->
-          target.text(message.substring(0, progress++) + (if progress & 1 and progress <= message.length then '_' else ''))
-          clearInterval timer if (progress >= message.length + 1)
-        , speed
+        element.each ->
+          element.text('')
+          write speed/message.length
       else
-        target.text message
+        element.text(message)
 
     pushResult = (message) ->
       $('#result').append message
 
     $ =>
-      writeResult
-        message: Messages.welcome
-        speed: 1
-      setTimeout ->
-        pushResult Messages.example
-      , 2 * 1000
+      writeResult 2000, Messages.welcome, 600, ->
+        writeResult 1000, Messages.example.subject, 600, ->
+          pushResult Messages.example.value
 
       $("form").submit =>
         message = $('#input-value')
         version = $('input[name=version]:checked').val()
 
         if message.val()
-          writeResult
-            message: 'Connecting...'
-            speed: 30
+          writeResult 1000, 'Connecting...'
           @emit search: { message: message.val(), version: version }
         false
 
-      $('input:radio:not(:disabled)').click =>
+      $('input:radio').click =>
         message = $('#input-value')
         version = $('input[name=version]:checked').val()
 
         if message.val()
-          writeResult
-            message: 'Connecting...'
-            speed: 30
+          writeResult 1000, 'Connecting...'
           @emit search: { message: message.val(), version: version }
-
-    @on write: ->
-      writeResult @data
-
-    @on push: ->
-      pushResult @data.message
-
-    @connect()
 
     Messages =
       welcome: '''
 Welcome to the page (aka Rurepl) Rurema Read-eval-print loop.
-
-Example: Array.each
 '''
 
-      example: '''
+      example:
+        subject: '''
+Example: Array.each
+'''
+        value: '''
 
 
 
