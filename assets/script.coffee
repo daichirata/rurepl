@@ -50,13 +50,19 @@
           @emit search: { message: message.val(), version: version }
         false
 
-      $('input:radio').click =>
+      $('input:[name="version"]').click =>
         message = $('#input-value')
         version = $('input[name=version]:checked').val()
 
         if message.val()
           writeResult 1000, 'Connecting...'
           @emit search: { message: message.val(), version: version }
+
+      $('#lock').click ->
+        $('#result').css('overflow-y', 'scroll').css('height', '420px').css('min-height', '')
+
+      $('#variable').click ->
+        $('#result').css('overflow-y', 'auto').css('min-height', '420px').css('height', '')
 
     Messages =
       welcome: '''

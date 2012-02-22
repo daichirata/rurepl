@@ -34,12 +34,9 @@
       border-radius 5px
 
     #result
-      min-height 420px
       padding-bottom 50px
       white-space pre-wrap
-      word-wrap: break-word
-      overflow auto
-
+      word-wrap break-word
 
     #input-value
       border-radius 3px
@@ -69,6 +66,9 @@
       position relative
       list-style none
       float left
+
+    ul.window li
+      left 0px !important
 
     dl.input-version dd label
       background #111

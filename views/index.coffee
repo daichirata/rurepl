@@ -1,16 +1,21 @@
 h1 @title
 div id: 'repl', ->
 
-  pre id: 'result', -> 'Connecting...'
+  pre id: 'result', style: 'overflow-y:scroll;height:420px;', -> 'Connecting...'
 
   div id: 'input', ->
     form id: 'input-form', ->
       dl class: 'input-version', ->
-        dd -> ul -> '''
-          <li><input type="radio" name="version" id="r187", value="1.8.7" /><label>Ruby 1.8.7</label></li>
-          <li><input type="radio" name="version" id="r192", value="1.9.2" checked="checked"/><label>Ruby 1.9.2</label></li>
-          <li><input type="radio" name="version" id="r193", value="1.9.3" /><label>Ruby 1.9.3</label></li>
-        '''
+        dd ->
+          ul -> '''
+            <li><input type="radio" name="version" id="r187", value="1.8.7" /><label>Ruby 1.8.7</label></li>
+            <li><input type="radio" name="version" id="r192", value="1.9.2" checked="checked"/><label>Ruby 1.9.2</label></li>
+            <li><input type="radio" name="version" id="r193", value="1.9.3" /><label>Ruby 1.9.3</label></li>
+          '''
+          ul class: 'window', -> '''
+            <li><input type="radio" name="window" id="lock" checked="checked" /><label>ウインドウを固定</label></li>
+            <li><input type="radio" name="window" id="variable"/><label>ウインドウを可変</label></li>
+          '''
       input id: 'input-value', type: 'text'
 
 div id: 'how-to', ->
