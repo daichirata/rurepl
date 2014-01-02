@@ -9,8 +9,8 @@ div id: 'repl', ->
         dd ->
           ul -> '''
             <li><input type="radio" name="version" id="r193", value="1.9.3" /><label>Ruby 1.9.3</label></li>
-            <li><input type="radio" name="version" id="r193", value="2.0.0" /><label>Ruby 2.0.0</label></li>
-            <li><input type="radio" name="version" id="r193", value="2.1.0" checked="checked"/><label>Ruby 2.1.0</label></li>
+            <li><input type="radio" name="version" id="r200", value="2.0.0" /><label>Ruby 2.0.0</label></li>
+            <li><input type="radio" name="version" id="r210", value="2.1.0" checked="checked"/><label>Ruby 2.1.0</label></li>
           '''
           ul class: 'window', -> '''
             <li><input type="radio" name="window" id="lock" checked="checked" /><label>固定ウィンドウ</label></li>
