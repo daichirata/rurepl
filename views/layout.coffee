@@ -28,25 +28,9 @@ html lang: 'ja', ->
          @body
 
       div id: 'meta-data', ->
-        a class: 'twitter-share-button', href: 'https://twitter.com/share', 'data-url': "http://rurepl.herokuapp.com/", 'data-lang': 'ja', 'data-count': 'none', 'ツイート'
-        coffeescript ->
-          [d, s, id]  = [document, 'script', 'twitter-wjs']
-          !do (d,s,id) ->
-              js = d.getElementsByTagName(s)[0]
-              fjs = d.getElementsByTagName(s)[0]
-
-              if !d.getElementById(id)
-                js = d.createElement(s)
-                js.id = id
-                js.src = '//platform.twitter.com/widgets.js'
-                fjs.parentNode.insertBefore(js,fjs)
-        a class: 'hatena-bookmark-button', href: 'http://b.hatena.ne.jp/entry/http://rurepl.herokuapp.com/', 'data-hatena-bookmark-title': 'Rurema Read-eval-print loop', 'data-hatena-bookmark-layout': 'standard', title: 'このエントリーをはてなブックマークに追加', ->
-          img src: 'http://b.st-hatena.com/images/entry-button/button-only.gif', alt: 'このエントリーをはてなブックマークに追加', width: '20', height: '20', style: 'border: none;'
-          script type: 'text/javascript', src: 'http://b.st-hatena.com/js/bookmark_button.js', charset: 'utf-8', async: 'async'
         a class: 'mgn-lr', href: 'https://github.com/daic-h/rurepl', -> 'Source Code'
         span 'created_by'
         a class: 'mgn-lr', href: 'https://twitter.com/#!/Daic_h', -> '@Daic_h'
 
       div id: 'copyright', ->
         p '検索対象のドキュメントは<a href="http://bugs.ruby-lang.org/projects/rurema"> るりまプロジェクト </a>の成果物です。'
-
