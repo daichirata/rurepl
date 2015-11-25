@@ -23,7 +23,7 @@
 
     # TODO host port
     request = http.get
-      "host": 'rurea.heroku.com',
+      "host": 'rurea.herokuapp.com',
       "port": 80,
       "path": query
     , (response) =>
